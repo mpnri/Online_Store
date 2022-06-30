@@ -1,0 +1,9 @@
+# .vscode
+.vscode/
+
+# codeblocks files
+bin/
+obj/
+*.cbp
+*.depend
+*.layout
