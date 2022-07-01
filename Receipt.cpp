@@ -1,9 +1,11 @@
 #include "Receipt.h"
 
-using namespace std;
-
-Receipt::Receipt(const product_map &products)
-    : product_list(products) {}
+Receipt::Receipt(const product_map &products, const item_counter &item_cnt)
+    : product_list(products)
+{
+    for (auto item : item_cnt)
+        this->items.push_back(item);
+}
 
 float Receipt::get_total_price()
 {

@@ -1,13 +1,12 @@
 #ifndef STOCK_H_INCLUDED
 #define STOCK_H_INCLUDED
 
-#include <vector>
-#include <utility>
+#include <map>
 
 class Stock
 {
 private:
-    std::vector<std::pair<int, int>> items;
+    std::map<int, int> item_cnt;
 public:
     Stock(/* args */) {}
     int get_count(int);

@@ -8,6 +8,7 @@
 #include <map>
 
 typedef std::map<int, Product> product_map;
+typedef std::map<int, int> item_counter;
 
 class Receipt
 {
@@ -17,7 +18,7 @@ private:
     const product_map &product_list;
 
 public:
-    Receipt(const product_map &);
+    Receipt(const product_map &, const item_counter &);
     float get_total_price();
 };
 
