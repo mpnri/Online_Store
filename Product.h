@@ -6,6 +6,7 @@
 
 class Product
 {
+    friend class Receipt;
 private:
     int id;
     std::string name;
