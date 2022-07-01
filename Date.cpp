@@ -168,7 +168,7 @@ Date::operator const char*() const
 
 string Date::to_str() const
 {
-    return to_string(year) + to_string(month) + to_string(day);
+    return to_string(year) + "." + to_string(month) + "." + to_string(day);
 }
 
 void Date::operator()(int y, int m, int d)

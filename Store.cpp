@@ -1,15 +1,16 @@
 #include "Store.h"
 #include <string>
 #include <iostream>
+#include <fstream>
 
 Store::Store() // todo
 {
 
 }
 
-Store::~Store() //todo
+Store::~Store()
 {
-
+    this->save_to_file();
 }
 
 void Store::check_out(int customer_id)
@@ -132,7 +133,40 @@ void Store::view_products()
 
 void Store::save_to_file() //todo
 {
+    std::ofstream data("data");
+    data << this->customers.size() << std::endl;
+    for (auto customer : this->customers)
+    {
+        data << customer.second.id << std::endl;
+        data << customer.second.name << std::endl;
+        data << customer.second.phone_number << std::endl;
+        data << customer.second.address << std::endl;
+        data << customer.second.balance << std::endl;
+        
+        data << customer.second.cart.item_cnt.size() << std::endl;
+        for (auto item : customer.second.cart.item_cnt)
+            data << item.first << ' ' << item.second << std::endl;
+        
+        data << customer.second.history.size() << std::endl;
 
+        for (auto receipt : customer.second.history)
+        {
+            data << receipt.items.size() << std::endl;
+            for (auto item : receipt.items)
+                data << item.first << ' ' << item.second << std::endl;
+        }
+    }
+
+    data << this->products.size() << std::endl;
+    for (auto product: this->products)
+    {
+        data << product.second.id << std::endl;
+        data << product.second.name << std::endl;
+        data << product.second.price << std::endl;
+        data << product.second.brand << std::endl;
+        data << product.second.expire_date.to_str() << std::endl;
+        data << this->stock.get_count(product.second.id) << std::endl;
+    }
 }
 
 void Store::sales_report()

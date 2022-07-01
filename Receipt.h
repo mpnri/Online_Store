@@ -12,6 +12,7 @@ typedef std::map<int, int> item_counter;
 
 class Receipt
 {
+    friend class Store;
 private:
     std::vector<std::pair<int, int>> items; //! id & quantity
     Date date; // TODO: handle date & system date

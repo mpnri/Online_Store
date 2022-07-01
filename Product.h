@@ -9,6 +9,7 @@ class Product
 {
     friend class Receipt;
     friend class Cart;
+    friend class Store;
     friend std::ostream& operator<<(std::ostream &output, const Product &product)
     {
         output << "-> ID: " << product.id << std::endl
