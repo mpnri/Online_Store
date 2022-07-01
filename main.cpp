@@ -15,7 +15,6 @@ int main()
     {
         string order;
         cin >> order;
-        // cout << "--- " << order << endl;
         if (order == "exit")
             break;
         if (order == "add")
@@ -44,6 +43,8 @@ int main()
             Aut.sales_report();
         }
 
+        if (order == "save") //* data
+            Aut.save_to_file();
         if (order == "checkout")
         {
             int customer_id;

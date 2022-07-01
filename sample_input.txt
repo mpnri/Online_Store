@@ -1,0 +1,40 @@
+add product
+122
+Galaxy S22 Ultra
+1200
+Phone
+2024/06/01
+200
+
+add customer
+12
+Arian
+09121234567
+Amirkabir University of Technology, Tehran, Iran
+120000
+
+customer 12 add 122
+customer 12 add 122
+checkout customer 12
+
+customer 12 status
+
+add product
+146
+Asus 504i
+1850
+Laptop
+2024/01/09
+18
+
+customer 12 add 146
+customer 12 add 122
+customer 12 add 146
+checkout customer 12
+
+sales report
+2022.6.30
+2022.7.3
+
+customer 12 status
+exit

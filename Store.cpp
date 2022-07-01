@@ -5,7 +5,7 @@
 
 typedef std::map<int, int> item_counter;
 
-Store::Store() // todo
+Store::Store()
 {
     std::fstream data("data");
     if (!data)
@@ -159,6 +159,12 @@ void Store::add_customer()
     std::cout << "- ID: ";
     std::cin >> id;
 
+    if (this->customers.find(id) != this->customers.end())
+    {
+        std::cout << "This ID has already been selected." << std::endl;
+        return;
+    }
+
     std::cout << "- name: ";
     std::cin.ignore();
     std::getline(std::cin, name);
@@ -259,6 +265,8 @@ void Store::save_to_file()
         data << product.second.expire_date.to_str() << std::endl;
         data << this->stock.get_count(product.second.id) << std::endl;
     }
+    std::cout << "data saved!" << std::endl
+              << std::endl;
 }
 
 void Store::sales_report()

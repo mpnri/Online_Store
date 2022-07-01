@@ -15,8 +15,8 @@ class Receipt
     friend class Store;
 
 private:
-    std::vector<std::pair<int, int>> items; //! id & quantity
-    Date date;                              // TODO: handle date & system date
+    std::vector<std::pair<int, int>> items; //* id & quantity
+    Date date;
     const product_map &product_list;
 
 public:
