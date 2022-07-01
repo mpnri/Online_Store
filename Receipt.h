@@ -14,12 +14,13 @@ class Receipt
 {
 private:
     std::vector<std::pair<int, int>> items; //! id & quantity
-    Date date;
+    Date date; // TODO: handle date & system date
     const product_map &product_list;
 
 public:
     Receipt(const product_map &, const item_counter &);
     float get_total_price();
+    void print();
 };
 
 #endif // RECEIPT_H_INCLUDED

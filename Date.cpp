@@ -2,6 +2,8 @@
 #include "Date.h"
 #include <stdexcept>
 #include <string>
+#include <iomanip>
+
 using namespace std;
 
 const string Date::monthName[13] = {"", "January", "February", "March", "April", "May", "June",
@@ -171,6 +173,18 @@ void Date::operator()(int y, int m, int d)
     setDay(d);
 }
 
+istream &operator>>(istream &input, Date &date)
+{
+    int year, month, day = 1;
+    input >> setw(4) >> year;
+    input.ignore();
+    input >> setw(2) >> month;
+    input.ignore();
+    input >> setw(2) >> day;
+    input >> setw(0);
+    date = Date(year, month, day);
+    return input;
+}
 
 //ostream &operator<<(ostream &output, const Date &date)
 //{

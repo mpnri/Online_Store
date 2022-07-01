@@ -5,9 +5,9 @@
 
 class Date
 {
-    // friend std::ostream &operator<<(std::ostream&, const Date&);
+    friend std::istream &operator>>(std::istream&, Date&);
 public:
-    explicit Date(unsigned int = 1900, unsigned int = 1, unsigned int = 1);
+    Date(unsigned int = 1900, unsigned int = 1, unsigned int = 1);
     Date(const Date&);
     Date(int);
 

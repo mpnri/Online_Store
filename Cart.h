@@ -9,6 +9,7 @@ typedef std::map<int, int> item_counter;
 
 class Cart
 {
+    friend class Customer;
 private:
     item_counter item_cnt;
     const product_map &product_list;
@@ -20,7 +21,6 @@ public:
     void reset();
     float get_total_price();
     void print();
-    const item_counter& get_cart_list();
     ~Cart() {}
 };
 

@@ -14,3 +14,11 @@ float Receipt::get_total_price()
         total += product_list.find(item.first)->second.price * item.second;
     return total;
 }
+
+void Receipt::print()
+{
+    std::cout << this->date << std::endl;
+    for (auto item : this->items)
+        std::cout << product_list.find(item.first)->second << std::endl << "-> Quantity : " << item.second << std::endl;
+    std::cout << "total price: " << this->get_total_price() << std::endl;
+}

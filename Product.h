@@ -11,11 +11,11 @@ class Product
     friend class Cart;
     friend std::ostream& operator<<(std::ostream &output, const Product &product)
     {
-        std::cout << "ID: " << product.id << std::endl
-                  << "name: " << product.name << std::endl
-                  << "brand: " << product.brand << std::endl
-                  << "price: " << product.price << std::endl
-                  << "expire date: " << product.expire_date;
+        output << "-> ID: " << product.id << std::endl
+                  << "-> name: " << product.name << std::endl
+                  << "-> price: " << product.price << std::endl
+                  << "-> brand: " << product.brand << std::endl
+                  << "-> expire date: " << product.expire_date;
         return output;
     }
 private:
@@ -24,6 +24,10 @@ private:
     float price;
     std::string brand;
     Date expire_date;
+public:
+    Product(int id, const std::string &name, float price, const std::string &brand, const Date& expire_date)
+        :id(id), name(name), price(price), brand(brand), expire_date(expire_date)
+    {}
 };
 
 #endif // PRODUCT_H_INCLUDED
