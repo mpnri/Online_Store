@@ -7,7 +7,7 @@
 using namespace std;
 
 const string Date::monthName[13] = {"", "January", "February", "March", "April", "May", "June",
-                              "July", "August", "September", "October", "November", "December"};
+                                    "July", "August", "September", "October", "November", "December"};
 
 const unsigned int Date::daysPerMonth[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
@@ -48,7 +48,7 @@ unsigned int Date::getYear() const
 
 void Date::setMonth(unsigned int m)
 {
-    if(m >= 1 && m <= 12)
+    if (m >= 1 && m <= 12)
         month = m;
     else
         throw std::invalid_argument("Invalid month!");
@@ -61,7 +61,7 @@ unsigned int Date::getMonth() const
 
 void Date::setDay(unsigned int d)
 {
-    if(checkDay(d))
+    if (checkDay(d))
         day = d;
     else
         throw std::invalid_argument("Invalid day for current month and year!");
@@ -75,15 +75,15 @@ unsigned int Date::getDay() const
 bool Date::leap(unsigned int testYear)
 {
     if (testYear % 400 == 0 ||
-       (testYear % 4 == 0 && testYear % 100 != 0))
-       return true;
+        (testYear % 4 == 0 && testYear % 100 != 0))
+        return true;
     else
         return false;
 }
 
 bool Date::endOfMonth(unsigned int testDay)
 {
-    if(leap(year) && month == 2)
+    if (leap(year) && month == 2)
         return testDay == 29;
     else
         return testDay == Date::daysPerMonth[month];
@@ -97,19 +97,19 @@ void Date::print() const
 bool Date::checkDay(unsigned int testDay) const
 {
 
-    if(testDay <= daysPerMonth[month])
+    if (testDay <= daysPerMonth[month])
         return true;
-    if((month == 2 && testDay == 29) &&
-       (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)))
+    if ((month == 2 && testDay == 29) &&
+        (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)))
         return true;
     return false;
 }
 
 void Date::increament()
 {
-    if(!endOfMonth(day))
+    if (!endOfMonth(day))
         ++day;
-    else if(month != 12)
+    else if (month != 12)
     {
         ++month;
         day = 1;
@@ -136,15 +136,15 @@ Date Date::operator++(int)
 
 Date &Date::operator+=(unsigned int daysToAdd)
 {
-    for(unsigned int i = 0; i < daysToAdd; ++i)
+    for (unsigned int i = 0; i < daysToAdd; ++i)
         increament();
     return *this;
 }
 
 Date::~Date()
 {
-//    std::cout << "Destructor of date ";
-//    print();
+    //    std::cout << "Destructor of date ";
+    //    print();
 }
 
 Date::operator int() const
@@ -152,14 +152,14 @@ Date::operator int() const
     return 10000 * year + 100 * month + day;
 }
 
-//Date::operator string() const
+// Date::operator string() const
 //{
-//    string s;
-//    s = Date::monthName[month] + " " + to_string(day) + ", " + to_string(year);
-//    return s;
-//}
+//     string s;
+//     s = Date::monthName[month] + " " + to_string(day) + ", " + to_string(year);
+//     return s;
+// }
 
-Date::operator const char*() const
+Date::operator const char *() const
 {
     static string s;
     s = Date::monthName[month] + " " + to_string(day) + ", " + to_string(year);
@@ -191,11 +191,8 @@ istream &operator>>(istream &input, Date &date)
     return input;
 }
 
-//ostream &operator<<(ostream &output, const Date &date)
+// ostream &operator<<(ostream &output, const Date &date)
 //{
-//    output << Date::monthName[date.month] << " " << date.day << ", " << date.year;
-//    return output;
-//}
-
-
-
+//     output << Date::monthName[date.month] << " " << date.day << ", " << date.year;
+//     return output;
+// }

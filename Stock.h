@@ -7,6 +7,7 @@ class Stock
 {
 private:
     std::map<int, int> item_cnt;
+
 public:
     Stock() {}
     int get_count(int);

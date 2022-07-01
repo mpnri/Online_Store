@@ -4,7 +4,8 @@
 
 Cart::Cart(const product_map &products)
     : product_list(products)
-{}
+{
+}
 
 void Cart::add(int id, int cnt)
 {
@@ -38,6 +39,7 @@ void Cart::print()
 {
     for (auto item : this->item_cnt)
         std::cout << product_list.find(item.first)->second << std::endl
-                  << "-> Quantity : " << item.second << std::endl << std::endl;
+                  << "-> Quantity : " << item.second << std::endl
+                  << std::endl;
     std::cout << "total price: " << this->get_total_price() << std::endl;
 }

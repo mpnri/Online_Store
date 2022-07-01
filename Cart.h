@@ -11,6 +11,7 @@ class Cart
 {
     friend class Customer;
     friend class Store;
+
 private:
     item_counter item_cnt;
     const product_map &product_list;

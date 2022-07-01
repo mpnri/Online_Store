@@ -15,17 +15,18 @@ private:
     product_map products;
     Stock stock;
     customer_map customers;
+
 public:
-    Store(); // todo: read from file
+    Store();
     void customer_action();
     void stock_status();
     void check_out(int);
     void add_customer();
     void add_product();
     void view_products();
-    void save_to_file(); // todo
+    void save_to_file();
     void sales_report();
-    ~Store(); // todo: save to file
+    ~Store();
 };
 
 #endif // STORE_H_INCLUDED

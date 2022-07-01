@@ -13,13 +13,14 @@ typedef std::map<int, int> item_counter;
 class Receipt
 {
     friend class Store;
+
 private:
     std::vector<std::pair<int, int>> items; //! id & quantity
-    Date date; // TODO: handle date & system date
+    Date date;                              // TODO: handle date & system date
     const product_map &product_list;
 
 public:
-    Receipt(const product_map &, const item_counter &, const Date&);
+    Receipt(const product_map &, const item_counter &, const Date &);
     float get_total_price();
     void print();
     Date get_date();
