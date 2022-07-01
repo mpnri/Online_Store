@@ -7,7 +7,7 @@ class Date
 {
     friend std::istream &operator>>(std::istream&, Date&);
 public:
-    Date(unsigned int = 1900, unsigned int = 1, unsigned int = 1);
+    Date(unsigned int = 1970, unsigned int = 1, unsigned int = 1);
     Date(const Date&);
     Date(int);
 
@@ -31,7 +31,7 @@ public:
     explicit operator int() const;
     // operator std::string() const;
     operator const char*() const;
-
+    std::string to_str() const;
     void operator()(int = 1900, int = 1, int = 1);
 
     ~Date();

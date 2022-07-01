@@ -8,7 +8,7 @@ class Stock
 private:
     std::map<int, int> item_cnt;
 public:
-    Stock(/* args */) {}
+    Stock() {}
     int get_count(int);
     void change_count_by(int, int);
     ~Stock() {}
