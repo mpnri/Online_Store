@@ -8,6 +8,8 @@ Cart::Cart(const product_map &products)
 
 void Cart::add(int id, int cnt)
 {
+    if (this->product_list.find(id) == this->product_list.end())
+        throw std::invalid_argument("Invalid Product ID");
     //! From Stock???
     this->item_cnt[id] += cnt;
 }

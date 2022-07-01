@@ -2,11 +2,23 @@
 #include <string>
 #include <iostream>
 
+Store::Store() // todo
+{
+
+}
+
+Store::~Store() //todo
+{
+
+}
+
 void Store::check_out(int customer_id)
 {
     if (this->customers.find(customer_id) == this->customers.end())
         throw std::invalid_argument("Invalid Customer ID");
     this->customers.find(customer_id)->second.convert_cart_to_receipt(this->stock);
+
+    //? message
     std::cout << "Customer " << customer_id << " checkout successfully!" << std::endl
     << "-> total purchase amount: " << this->customers.find(customer_id)->second.get_total_purchase_amount() << std::endl
     << "------------------------------------------------------" << std::endl;
@@ -17,6 +29,8 @@ void Store::customer_action()
     int customer_id, product_id;
     std::string action;
     std::cin >> customer_id >> action;
+    if (this->customers.find(customer_id) == this->customers.end())
+        throw std::invalid_argument("Invalid Customer ID");
     if (action == "reset")
         this->customers.find(customer_id)->second.cart.reset();
     else if (action == "status")
@@ -35,6 +49,15 @@ void Store::customer_action()
     }
     std::cout << "action done!" << std::endl;
     this->customers.find(customer_id)->second.cart.print();
+    std::cout << "------------------------------------------------------" << std::endl;
+}
+
+void Store::stock_status()
+{
+    std::cout << "Stock: " << std::endl;
+    for (auto item : this->products)
+        if (this->stock.get_count(item.first))
+            std::cout << item.second << std::endl << "-> Quantity: " << this->stock.get_count(item.first) << std::endl << std::endl;
     std::cout << "------------------------------------------------------" << std::endl;
 }
 
@@ -112,7 +135,26 @@ void Store::save_to_file() //todo
 
 }
 
-void Store::sales_report(const Date &start, const Date &end) //todo
+void Store::sales_report()
 {
+    Date start, end;
+    std::cout << "start date: ";
+    std::cin >> start;
 
+    std::cout << "end date: ";
+    std::cin >> end;
+
+    std::cout << "Sales Report: " << std::endl;
+    std::map<std::string, float> sales;
+    for (auto customer : this->customers)
+        for (auto receipt:customer.second.history)
+            sales[receipt.get_date().to_str()] += receipt.get_total_price();
+    for (auto date=start;date.to_str()!=end.to_str();date++)
+    {
+        std::cout << date.getYear() << '.' << date.getMonth() << '.' << date.getDay() << ": ";
+        while (sales[date.to_str()]>=100)
+            std::cout << "++ ", sales[date.to_str()]-=100;
+        std::cout << std::endl;
+    }
+    std::cout << "------------------------------------------------------" << std::endl;
 }

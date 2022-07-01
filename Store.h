@@ -16,15 +16,16 @@ private:
     Stock stock;
     customer_map customers;
 public:
-    Store(/* args */) {}
+    Store(); // todo: read from file
     void customer_action();
+    void stock_status();
     void check_out(int);
     void add_customer();
     void add_product();
     void view_products();
     void save_to_file(); // todo
-    void sales_report(const Date&, const Date&); // todo
-    ~Store() {}
+    void sales_report();
+    ~Store(); // todo: save to file
 };
 
 #endif // STORE_H_INCLUDED

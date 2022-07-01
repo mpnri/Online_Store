@@ -4,13 +4,13 @@
 #include <iostream>
 #include <string>
 #include "Store.h"
+#include <ctime>
 
 using namespace std;
 
 int main()
 {
     Store Aut;
-    // todo: read from file
     while (true)
     {
         string order;
@@ -31,6 +31,19 @@ int main()
         if (order == "customer")
             Aut.customer_action();
 
+        if (order == "product") //* list
+            Aut.view_products();
+
+        if (order == "stock") //* list
+            Aut.stock_status();
+
+        if (order == "sales") //* report
+        {
+            string tmp;
+            cin >> tmp;
+            Aut.sales_report();
+        }
+
         if (order == "checkout")
         {
             int customer_id;
@@ -39,6 +52,6 @@ int main()
             Aut.check_out(customer_id);
         }
     }
-    // todo: save to file
+
     return 0;
 }

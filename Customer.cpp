@@ -1,4 +1,6 @@
 #include "Customer.h"
+#include <stdexcept>
+#include <ctime>
 
 Customer::Customer(const product_map &product_list, int id, const std::string &name,
                    const std::string &phone_number, const std::string &address, float balance)
@@ -9,9 +11,16 @@ Customer::Customer(const product_map &product_list, int id, const std::string &n
 void Customer::convert_cart_to_receipt(Stock &stock)
 {
     for (auto item : this->cart.item_cnt)
-        stock.change_count_by(item.first, item.second);
+        if (stock.get_count(item.first)<item.second)
+            throw std::out_of_range("Not enough stock");
+    for (auto item : this->cart.item_cnt)
+        stock.change_count_by(item.first, -item.second);
     this->balance -= this->cart.get_total_price();
-    Receipt receipt(product_list, this->cart.item_cnt); //todo: Set Date && add h m s to Date
+    time_t now = time(0);
+    auto local = localtime(&now);
+
+    Date date(1900 + local->tm_year, 1+ local->tm_mon, local->tm_mday);
+    Receipt receipt(product_list, this->cart.item_cnt, date); //todo: Set Date && add h m s to Date
     this->history.push_back(receipt);
     this->cart.reset();
 }

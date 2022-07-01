@@ -166,6 +166,11 @@ Date::operator const char*() const
     return s.c_str();
 }
 
+string Date::to_str() const
+{
+    return to_string(year) + to_string(month) + to_string(day);
+}
+
 void Date::operator()(int y, int m, int d)
 {
     setYear(y);
