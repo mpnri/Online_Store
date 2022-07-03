@@ -44,6 +44,10 @@ authored by @Mpnri
 
 <br>
 
+* **```sales report```**: report sales from start time to end time
+
+<br>
+
 * **```save data```**: save data to "data"
 
 ## input example
