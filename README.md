@@ -2,6 +2,10 @@
 
 authored by @Mpnri
 
+## Running with command line
+
+```if ($?) { g++ main.cpp Store.cpp Cart.cpp Customer.cpp Date.cpp Receipt.cpp Stock.cpp -o main } ; if ($?) { .\main }```
+
 ## Guid commands
 
 * **```add product```**: adding product
