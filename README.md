@@ -2,7 +2,7 @@
 
 authored by @Mpnri
 
-## Run Project with command line
+## Run project with command line
 
 ```if ($?) { g++ main.cpp Store.cpp Cart.cpp Customer.cpp Date.cpp Receipt.cpp Stock.cpp -o main } ; if ($?) { .\main }```
 
